@@ -1,77 +1,133 @@
-# Deployment and DevOps for MERN Applications
+# Deployment and DevOps Essentials – MERN Week 7
 
-This assignment focuses on deploying a full MERN stack application to production, implementing CI/CD pipelines, and setting up monitoring for your application.
+##  Project Overview
 
-## Assignment Overview
+This project demonstrates deployment and DevOps practices for a full MERN stack application. The app includes:
 
-You will:
-1. Prepare your MERN application for production deployment
-2. Deploy the backend to a cloud platform
-3. Deploy the frontend to a static hosting service
-4. Set up CI/CD pipelines with GitHub Actions
-5. Implement monitoring and maintenance strategies
+* **Frontend:** React + Vite
+* **Backend:** Express.js + MongoDB
+* **Database:** MongoDB Atlas
 
-## Getting Started
+The project has been deployed to production and is accessible online.
 
-1. Accept the GitHub Classroom assignment invitation
-2. Clone your personal repository that was created by GitHub Classroom
-3. Follow the setup instructions in the `Week7-Assignment.md` file
-4. Use the provided templates and configuration files as a starting point
+---
 
-## Files Included
+##  Deployed URLs
 
-- `Week7-Assignment.md`: Detailed assignment instructions
-- `.github/workflows/`: GitHub Actions workflow templates
-- `deployment/`: Deployment configuration files and scripts
-- `.env.example`: Example environment variable templates
-- `monitoring/`: Monitoring configuration examples
+* **Frontend (React App):** [Vercel URL here]
+   `https://deployment-week7-client.vercel.app`
+* **Backend (Express API):** [Render URL here]
+    `https://deployment-and-devops-essentials-charis.onrender.com`
+  
+> Replace the frontend URL with your actual Vercel deployment link.
 
-## Requirements
+---
 
-- A completed MERN stack application from previous weeks
-- Accounts on the following services:
-  - GitHub
-  - MongoDB Atlas
-  - Render, Railway, or Heroku (for backend)
-  - Vercel, Netlify, or GitHub Pages (for frontend)
-- Basic understanding of CI/CD concepts
+##  Project Structure
 
-## Deployment Platforms
+```
+deployment-and-devops-essentials-Charis-Tracie/
+├── server/        ← Backend (Express + MongoDB)
+│   ├── server.js
+│   ├── package.json
+│   ├── routes/
+│   └── models/
+└── client/        ← Frontend (React + Vite)
+    ├── package.json
+    ├── vite.config.js
+    └── src/
+```
 
-### Backend Deployment Options
-- **Render**: Easy to use, free tier available
-- **Railway**: Developer-friendly, generous free tier
-- **Heroku**: Well-established, extensive documentation
+---
 
-### Frontend Deployment Options
-- **Vercel**: Optimized for React apps, easy integration
-- **Netlify**: Great for static sites, good CI/CD
-- **GitHub Pages**: Free, integrated with GitHub
+## ⚙️ Installation (Local Development)
 
-## CI/CD Pipeline
+### Backend
 
-The assignment includes templates for setting up GitHub Actions workflows:
-- `frontend-ci.yml`: Tests and builds the React application
-- `backend-ci.yml`: Tests the Express.js backend
-- `frontend-cd.yml`: Deploys the frontend to your chosen platform
-- `backend-cd.yml`: Deploys the backend to your chosen platform
+```bash
+cd server
+npm install
+npm run dev   # runs server on localhost:5000
+```
 
-## Submission
+### Frontend
 
-Your work will be automatically submitted when you push to your GitHub Classroom repository. Make sure to:
+```bash
+cd client
+npm install
+npm run dev   # runs frontend on localhost:5173+
+```
 
-1. Complete all deployment tasks
-2. Set up CI/CD pipelines with GitHub Actions
-3. Deploy both frontend and backend to production
-4. Document your deployment process in the README.md
-5. Include screenshots of your CI/CD pipeline in action
-6. Add URLs to your deployed applications
+* Make sure to set environment variables in `.env`:
 
-## Resources
+```env
+MONGO_URI=<Your MongoDB Atlas URI>
+```
 
-- [GitHub Actions Documentation](https://docs.github.com/en/actions)
-- [MongoDB Atlas Documentation](https://docs.atlas.mongodb.com/)
-- [Render Documentation](https://render.com/docs)
-- [Railway Documentation](https://docs.railway.app/)
-- [Vercel Documentation](https://vercel.com/docs)
-- [Netlify Documentation](https://docs.netlify.com/) 
+* Frontend `.env`:
+
+```env
+VITE_API_URL=http://localhost:5000
+```
+
+---
+
+## Deployment
+
+### Backend (Render)
+
+1. Create a new Web Service on Render.
+2. Set **Root Directory:** `server`
+3. **Build Command:** `npm install`
+4. **Start Command:** `npm start`
+5. Add environment variable:
+
+```
+MONGO_URI=<MongoDB Atlas URI>
+```
+
+6. Render automatically deploys on every GitHub push.
+
+### Frontend (Vercel)
+
+1. Import GitHub repo into Vercel.
+2. Set **Root Directory:** `client`
+3. **Build Command:** `npm run build`
+4. **Output Directory:** `dist`
+5. Add environment variable:
+
+```
+VITE_API_URL=https://deployment-and-devops-essentials-charis.onrender.com
+```
+
+6. Vercel automatically deploys on every GitHub push.
+
+---
+
+##  CI/CD
+
+* GitHub Actions used for **Continuous Integration**:
+
+  * Backend tests
+  * Frontend linting & build
+* Automatic deployment to Render and Vercel on push to `main`.
+
+
+
+##  Monitoring & Maintenance
+
+* Backend logging enabled via Express.
+* Render monitors server uptime.
+* Frontend performance monitored via browser tools.
+* Database backups handled by MongoDB Atlas.
+
+
+
+
+
+##  Usage
+
+1. Access frontend via Vercel URL.
+2. Interact with API via deployed Render backend.
+3. All CRUD operations for your MERN app work in production.
+
